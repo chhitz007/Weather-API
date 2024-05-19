@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/80da12522d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="weather-container">
+        <h1>Weather App</h1>
+        <form action="/get_weather" method="post">
+            <label for="cityInput">Enter City:</label>
+            <input type="text" id="cityInput" name="city" placeholder="Enter city name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        {% if city %}
+            <div class="weather-info">
+                <p>City: {{ city }}</p>
+                <p><i class="fas fa-cloud"></i> Temperature: {{ temperature }}°C</p>
+                <p><i class="fas fa-tint"></i> Humidity: {{ humidity }}%</p>
+                <p><i class="fas fa-tachometer-alt"></i> Pressure: {{ pressure }} hPa</p>
+                <p><i class="fas fa-temperature-low"></i> Min Temperature: {{ temp_min }}°C</p>
+                <p><i class="fas fa-temperature-high"></i> Max Temperature: {{ temp_max }}°C</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
